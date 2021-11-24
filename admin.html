@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="admin.css">
+    <title>Admin Page</title>
+</head>
+
+<body>
+
+
+    <button id="signOut" onclick="out()">SIGN OUT</button>
+    <div id="content">
+
+        <label id="g_info">General Info</label><br>
+        <textarea id="generalinfo" type="text" name="generalinfo" value=""></textarea><br>
+        <label id="bio_info">Biography</label><br>
+        <textarea id="bio" type="text" name="bio" value=""></textarea><br>
+        <label id="contact_info">Contact</label><br>
+        <input id="contact" type="text" name="contact" value=""><br>
+
+
+        <button id="update" onclick="update()">UPDATE</button>
+
+
+    </div>
+    <br>
+
+
+
+    <script>
+        function update() {
+            var updatebtn = document.getElementById("update");
+
+            var generalinfo = document.getElementById("generalinfo");
+            var bio = document.getElementById("bio");
+            var contact = document.getElementById("contact");
+            var get_img_url = document.getElementById("output_image");
+
+
+
+            const http = new EasyHTTP;
+
+            const data = {
+                header: generalinfo.value,
+                bio: bio.value,
+                contact: contact.value
+
+            }
+
+
+            http.put(
+                'https://60281788dd4afd001754af46.mockapi.io/api/information/1',
+                data)
+
+
+            .then(data => console.log(data))
+
+
+            .catch(err => console.log(err));
+
+
+
+
+        }
+
+        function getInfo() {
+            var generalinfo = document.getElementById("generalinfo");
+            var bio = document.getElementById("bio");
+            var contact = document.getElementById("contact");
+            var imgResponse = document.getElementById("output_image");
+            var request = new XMLHttpRequest();
+            request.open('GET', 'https://60281788dd4afd001754af46.mockapi.io/api/information', true);
+            request.onload = function() {
+
+                var data = JSON.parse(this.response)
+
+                if (request.status >= 200 && request.status < 400) {
+                    data.forEach((info) => {
+                        generalinfo.value = info.header;
+                        bio.value = info.bio;
+                        contact.value = info.contact;
+
+
+
+
+
+                    });
+                } else {
+                    console.log('error');
+                }
+            }
+
+            request.send();
+        }
+
+
+
+
+        getInfo();
+    </script>
+</body>
+<script src="update.js"></script>
+<script>
+    function out() {
+        window.location = "login.html";
+    }
+</script>
+
+
+
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Login Page</title>
+    <meta name="description" content="website description" />
+    <meta name="keywords" content="website keywords, website keywords" />
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+    <link rel="stylesheet" type="text/css" href="login.css" />
+</head>
+
+<body>
+    <div id="main">
+        <div id="header">
+            <div id="logo">
+                <div id="logo_text">
+
+                    <h1><a href="homepage.html">Fatmanur<span class="logo_colour">Yavuz</span></a></h1>
+                    <h2>Junior Web-developer</h2>
+                </div>
+            </div>
+            <h2 style="text-align: center;">Sayfama Hoşgeldiniz. Lütfen giriş yapın.</h2><br>
+            <div class="login">
+                <form id="login" method="get" action="login.js">
+                    <label><b>Kullanıcı Adı
+        </b>
+        </label>
+                    <input type="text" name="Uname" id="Uname" placeholder="Kullanıcı Adı ">
+                    <br><br>
+                    <label><b>Şifre
+        </b>
+        </label>
+                    <input type="Password" name="UPass" id="UPass" placeholder="Şifre">
+                    <br><br>
+                    <input type="button" onClick="loginAsUser()" value="Kullanıcı Girişi" />
+                    <br>
+                    <label><b>Admin ID
+        </b>
+        </label>
+                    <input type="text" name="Aname" id="Aname" placeholder="Admin">
+                    <br><br>
+                    <label><b>Şifre
+        </b>
+        </label>
+                    <input type="password" name="APass" id="APass" placeholder="Password">
+                    <br><br>
+                    <input type="button" onClick="loginAsAdmin()" value="Admin Girişi" />
+                    <br><br>
+                    <input type="checkbox" id="check">
+                    <span>Beni Hatırla</span>
+                    <br><br>
+
+                </form>
+            </div>
+
+            <script src="login.js"></script>
+</body>
+
+
+
+
+
+</html>
